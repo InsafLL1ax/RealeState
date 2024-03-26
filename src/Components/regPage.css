@@ -14,7 +14,7 @@
 }
 
 .regPage__content__form__head{
-    background: #646ded;
+    background: #205c27;;
     border-radius: 2px;
 }
 
@@ -25,6 +25,7 @@
     padding: 5px 8px;
     margin-top: 5px;
     border-radius: 2px;
+    font-size: large;
 }
 
 .regPage__content__form__inputs__lastName{
@@ -34,6 +35,7 @@
     padding: 5px 8px;
     margin-top: 8px;
     border-radius: 2px;
+    font-size: large;
 }
 
 .regPage__content__form__inputs__phone{
@@ -43,6 +45,7 @@
     padding: 5px 8px;
     margin-top: 8px;
     border-radius: 2px;
+    font-size: large;
 }
 
 .regPage__content__form__inputs__email{
@@ -52,16 +55,18 @@
     padding: 5px 8px;
     margin-top: 8px;
     border-radius: 2px;
+    font-size: large;
 }
 
 .regPage__content__form__inputs__button{
     color: rgb(255, 255, 255);
     border: 1px solid;
-    padding: 5px 8px;
+    padding: 5px 17px;
     margin: 0px 130px 14px 115px;
     background: #151775;
     cursor: grab;
     border-radius: 2px;
+    font-size: large;
 }
 
 
@@ -73,5 +78,5 @@
     flex-direction: column;
     padding: 15px 15px;
     gap: 8px;
-    width: 275px;
+    /*width: 275px;*/
 }

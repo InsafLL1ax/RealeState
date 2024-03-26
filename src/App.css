@@ -1,0 +1,13 @@
+#bigfooter{
+
+background: "url('house2.jpg') repeat scroll 0 0 transparent";
+
+
+border-top: 1px solid #EEEEEE;
+clear:both;
+height:290px;
+margin:0 auto;
+min-height:251px;
+width:100%;
+}
+
