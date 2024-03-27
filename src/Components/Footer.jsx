@@ -5,16 +5,15 @@ export function Footer() {
         <div id="bigfooter">
             <div className="multi-columns">
                 <div className="fourth">
-                        <tr className="bigfooter__text">
-                            <h3>ABOUT US</h3>
-                        </tr>
-                    <h4>We Buy Houses At Any Price - No Matter The Condition!</h4>
-                    <p>'© 2024 Real State, Inc.</p>
-
-                    <li><a href="https://t.me/woilvliow"><img src="url('telegram.png')" alt="" /></a></li>
+                    <tr className="bigfooter__text">
+                        <p>ABOUT US</p>
+                    </tr>
+                    <p className="bigfooter__text__href">© 2024 Real State, Inc.
+                      <a href="https://msngr.link/tg/woilvliow">Write to Telegram</a>
+                      </p>
                 </div>
             </div>
-        
+
         </div>
     );
 }

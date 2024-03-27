@@ -1,7 +1,41 @@
-.bigfooter__text{
-}
+#bigfooter{
 
-.multi-columns{
-    margin-top: 15px;
-    margin-left: 600px;
+    background: "url('house2.jpg') repeat scroll 0 0 transparent";
+    
+    
+    /*border-top: 1px solid #EEEEEE;*/
+   /* height:290px;*/
+        margin:0 auto;
+      /*  min-height:251px;*/
+    clear:both;
+    width:100%;
+    height: 30px;
+    }
+    
+    .multi-columns{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin-top: 15px;
+        position: fixed;
+    }
+    
+
+    .fourth{
+        align-items: center;
+        flex-flow: column;
+        display: flex;
+        background-color: #d38806;
+      /* height: 90px; */
+        width: 100%;
+        
+    }
+
+   .bigfooter__text{
+    margin: 0px;
+   } 
+
+.bigfooter__text__href{
+    display: contents;
 }
+   

@@ -10,11 +10,16 @@
     display: flex;
     align-items: end;
     flex-direction: column;
+    margin-right: 150px;
     
 }
 
+.regPage__content__form{
+    background-color: #151775;
+}
+
 .regPage__content__form__head{
-    background: #205c27;;
+    background: #d38806;
     border-radius: 2px;
 }
 
