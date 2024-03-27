@@ -1,7 +1,39 @@
-
-.general__text{
+.header__block{
+    
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-family: cursive;
+    top: 0px;
+    width: 100%;
+    position: fixed;
+    table-layout: fixed
+}
+
+.header__block__menu{
+    justify-content: center;
+    display: flex;
+    background-color: #0671d3;
+  /* height: 90px; */
+    width: 100%;
+}
+
+.header__block__menu__home{
+    margin-right: 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.header__block__menu_about{
+    margin-right: 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.header__block__menu__How_Works{
+    margin-right: 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.header__block__menu__reviews{
+    cursor: pointer;
+    font-size: 20px;
 }

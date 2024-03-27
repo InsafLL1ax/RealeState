@@ -1,7 +1,7 @@
 .regPage__title{
     flex-direction: column;
     align-items: center;
-    color: #151775;
+    color: #000000;
     display: flex;
 }
 
@@ -15,11 +15,11 @@
 }
 
 .regPage__content__form{
-    background-color: #151775;
+    background-color: #c4deed;
 }
 
 .regPage__content__form__head{
-    background: #d38806;
+    background: #0671d3;
     border-radius: 2px;
 }
 
@@ -68,7 +68,7 @@
     border: 1px solid;
     padding: 5px 17px;
     margin: 0px 130px 14px 115px;
-    background: #151775;
+    background: #212d51;
     cursor: grab;
     border-radius: 2px;
     font-size: large;

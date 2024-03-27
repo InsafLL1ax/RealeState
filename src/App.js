@@ -13,7 +13,6 @@ function App() {
  <BackgroundImage />
     <GeneralPage />
     <RegPage />
-    
     <Footer />
     <MiddlePage />
     

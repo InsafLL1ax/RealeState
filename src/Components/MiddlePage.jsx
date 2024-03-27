@@ -3,7 +3,7 @@ import './middlePage.css'
 export function MiddlePage(){
     return(
         
-        <div id="bigfoot">
+        <div className="bigfoot">
         <div className="multi-colu">
             <div className="four">
                 <tr className="bigfooter__t">
