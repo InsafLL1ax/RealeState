@@ -31,6 +31,24 @@ export const RegPage = () => {
         }
     }
 
+    const sendMessageToTelegram = () => {
+        const message = 'Your message to the Telegram bot';
+        fetch('http://localhost:8080/send-message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: message }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Здесь можно обработать ответ от сервера
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
 
     return (
         <div className="regPage" >
@@ -78,7 +96,7 @@ export const RegPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='regPage__content__form__inputs__button'>NEXT</div>
+                    <div className='regPage__content__form__inputs__button' onClick={sendMessageToTelegram}>NEXT</div>
                 </div>
             </div>
         </div>

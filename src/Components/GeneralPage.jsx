@@ -10,7 +10,15 @@ export function BackgroundImage() {
     document.body.style.margin = "auto";
 
 }
+function fetchFromServer() {
+    fetch('http://localhost:3001/')
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+}
 
+// Вызываем функцию при загрузке компонента или событии
+fetchFromServer();
 export function GeneralPage({middlePageRef}) {
     const homePageRef = useRef(null);
     const scrollToMiddlePage = () => {
