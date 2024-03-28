@@ -4,20 +4,19 @@ import { BackgroundImage } from "./Components/GeneralPage";
 import { RegPage } from "./Components/RegPage";
 import './App.css';
 import { MiddlePage } from "./Components/MiddlePage";
-
+import React, {useRef} from "react";
 
 
 function App() {
+ 
+  const middlePageRef = useRef(null);
   return (
     <>
- <BackgroundImage />
-    <GeneralPage />
-    <RegPage />
+    <BackgroundImage />
+    <RegPage  />
+    <GeneralPage middlePageRef ={middlePageRef} />
     <Footer />
-    <MiddlePage />
-    
-    
-    
+    <MiddlePage middlePageRef ={middlePageRef} />
  </>
   );
 }

@@ -5,7 +5,7 @@ export function Footer() {
         <div id="bigfooter">
             <div className="multi-columns">
                 <div className="fourth">
-                    <p className="bigfooter__text__href">© 2024 Real State, Inc.
+                    <p className="bigfooter__text__href">© 2024 Reale State, Inc.
                       <a href="https://msngr.link/tg/woilvliow">Write to Telegram</a>
                       </p>
                 </div>
