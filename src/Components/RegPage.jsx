@@ -6,7 +6,7 @@ export const RegPage = () => {
     const [ErorrPhone, setErrorPhone] = useState(false);
     const phoneRef = useRef();
     const regRef = useRef();
-
+   
 
 
     const onValidateEmailInput = () => {
@@ -31,9 +31,9 @@ export const RegPage = () => {
         }
     }
 
-    const sendMessageToTelegram = () => {
-        const message = 'Your message to the Telegram bot';
-        fetch('http://localhost:8080/send-message', {
+    const sendMessageToTelegram = (firstName, lastName, phone, email) => {
+        const message = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone: ${phone}\nEmail: ${email}`;
+        fetch('http://localhost:3001/send-message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,6 +49,16 @@ export const RegPage = () => {
             console.error('Error:', error);
         });
     };
+
+    
+const handleClickNext = () => {
+    const firstName = document.querySelector('.regPage__content__form__inputs__firstName').value;
+    const lastName = document.querySelector('.regPage__content__form__inputs__lastName').value;
+    const phone = document.querySelector('.regPage__content__form__inputs__phone').value;
+    const email = document.querySelector('.regPage__content__form__inputs__email').value;
+
+    sendMessageToTelegram(firstName, lastName, phone, email);
+};
 
     return (
         <div className="regPage" >
@@ -96,7 +106,7 @@ export const RegPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='regPage__content__form__inputs__button' onClick={sendMessageToTelegram}>NEXT</div>
+                    <div className='regPage__content__form__inputs__button' onClick={handleClickNext}>NEXT</div>
                 </div>
             </div>
         </div>
