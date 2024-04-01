@@ -2,29 +2,23 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const TelegramBot = require('node-telegram-bot-api');
+const WebSocket = require('ws'); // Импортируем модуль WebSocket
 
-const port = 3001; // Порт, на котором будет запущен сервер
+const port = 3001;
+const wsPort = 3002;
 const app = express();
+
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('Hello World 3001!')
-  });
-
-const botToken = '6676309872:AAF-SniHoGi5O4lkg9eIylQE2lBsNV76hiE'; // Токен вашего Telegram бота
-
-// Инициализация Telegram бота
+const botToken = '6676309872:AAF-SniHoGi5O4lkg9eIylQE2lBsNV76hiE';
 const bot = new TelegramBot(botToken, { polling: false });
 
-// Парсер для POST запросов
 app.use(bodyParser.json());
 
-// Обработка POST запросов на отправку сообщений в Telegram
 app.post('/send-message', (req, res) => {
-    
     const message = req.body?.message;
     console.log(message);
-    const chatId = '-1002013528530'; // ID чата, куда будет отправлено сообщение
+    const chatId = '-1002013528530';
 
     bot.sendMessage(chatId, message)
         .then(() => {
@@ -35,7 +29,18 @@ app.post('/send-message', (req, res) => {
         });
 });
 
-// Запуск сервера
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+const server = app.listen(port, () => {
+    console.log(`Express server is running on port ${port}`);
 });
+
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (ws) => {
+    ws.on('message', (message) => {
+        console.log('received: %s', message);
+    });
+
+    ws.send('connected');
+});
+
+console.log(`WebSocket server is running on port ${wsPort}`);
