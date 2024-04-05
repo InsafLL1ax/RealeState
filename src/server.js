@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors());
 
-const botToken = '6676309872:AAF-SniHoGi5O4lkg9eIylQE2lBsNV76hiE';
+const botToken = '';
 const bot = new TelegramBot(botToken, { polling: false });
 
 app.use(bodyParser.json());
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.post('/send-message', (req, res) => {
     const message = req.body?.message;
     console.log(message);
-    const chatId = '-1002013528530';
+    const chatId = '';
 
     bot.sendMessage(chatId, message)
         .then(() => {
