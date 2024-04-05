@@ -82,6 +82,21 @@
     font-size: large;
 }
 
+.message-sent{
+    padding: 5px 66px;
+    margin: 0px 0px 16px 0px;
+    font-size: large;
+    background: #43d309;
+}
+
+.error-message{
+    padding: 5px 66px;
+    margin: 0px 0px 16px 0px;
+    font-size: large;
+    background: #e90a0a;
+}
+
+
 
 
 .regPage__content__form__inputs{

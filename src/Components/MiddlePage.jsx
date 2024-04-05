@@ -1,6 +1,4 @@
-
 import './middlePage.css'
-
 
 export function MiddlePage({middlePageRef}){
     return(
@@ -13,11 +11,16 @@ export function MiddlePage({middlePageRef}){
                 </div>
             </div>
             <div className='middlePage__info__about'>
-            <img className='middlePage__info__text__picture' src ="house.jpg" alt="House"></img>
+            <img className='middlePage__info__text__picture' src ="red_home.png" alt="House"></img>
             <div className='middlePage__info__about__us'>
-            <h4>No realtor commissions out of your pocket, you get 100% of cash</h4>
-            <h4>We will connect you to our home buyers network and start reciving offers today!</h4>
-            <h4>We buy houses for cash so we’re able to complete the process 5 times faster than others!</h4>
+            <h3>No realtor commissions out of your pocket, you get 100% of cash</h3>
+            <img className= 'mark' src ="mark.png" alt="mark"></img>
+            <h3>We will connect you to our home buyers network and start reciving offers today!</h3>
+            <img className= 'mark' src ="mark.png" alt="mark"></img>
+            <h3>We buy houses for cash so we’re able to complete the process 5 times faster than others!</h3>
+            <img className= 'mark' src ="mark.png" alt="mark"></img>
+            <h3>We will accompany you from start to finish of the operation!</h3>
+            <img className= 'mark' src ="mark.png" alt="mark"></img>
             </div>
             </div>
         </div>

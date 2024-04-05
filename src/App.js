@@ -5,18 +5,20 @@ import { RegPage } from "./Components/RegPage";
 import './App.css';
 import { MiddlePage } from "./Components/MiddlePage";
 import React, {useRef} from "react";
-
+import { WorkPage } from "./Components/WorkPage";
 
 function App() {
  
   const middlePageRef = useRef(null);
+  const HowItWorksRef = useRef(null)
   return (
     <>
     <BackgroundImage />
     <RegPage  />
-    <GeneralPage middlePageRef ={middlePageRef} />
+    <GeneralPage middlePageRef ={middlePageRef} HowItWorksRef ={HowItWorksRef}/>
     <Footer />
     <MiddlePage middlePageRef ={middlePageRef} />
+    <WorkPage HowItWorksRef ={HowItWorksRef} />
  </>
   );
 }

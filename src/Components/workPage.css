@@ -1,32 +1,28 @@
-.middlePage__info__text{
-     padding-top: 5%;
-    margin-top: 5%;
+.workPage__info__text{
+    padding-top: 5%;
     height: 150px;
 }
 
-.middlePage__info__text__about{
+.workPage__info__text__about{
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
     align-items: center;
 }
 
-.middlePage__info__about{
+.workPage__info__about{
     justify-content: center;
     align-content: space-between;
     display: flex;
 }
 
-
-.middlePage__info__text__picture {
+.workPage__info__text__picture{
     width: 26%; 
     /* height:  40%;  */
-  }
+    margin-bottom: 20%;
+}
 
-.middlePage__info__about__us{
+.workPage__info__about__us{
     margin-left: 15px;
     color: #0671d3;
-}
-.mark{
-    width: 30px;
 }

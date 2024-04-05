@@ -4,34 +4,27 @@ import './regPage.css';
 export const RegPage = () => {
     const [ErorrEmail, setErrorEmail] = useState(false);
     const [ErorrPhone, setErrorPhone] = useState(false);
+    const [messageSent, setMessageSent] = useState(false); // Состояние для отслеживания отправки сообщения
+    const [errorMessage, setErrorMessage] = useState(false); // Состояние для хранения текста ошибки
     const phoneRef = useRef();
     const regRef = useRef();
-   
-
 
     const onValidateEmailInput = () => {
         const RegValue = regRef.current.value;
         // eslint-disable-next-line
         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!RegValue.match(mailformat)) {
-            setErrorEmail(true);
-        } else {
-            setErrorEmail(false);
-        }
-    }
+        setErrorEmail(!RegValue.match(mailformat));
+    };
 
     const onValidatePhoneInput = () => {
         const PhonedValue = phoneRef.current.value;
-
         const phoneformat = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-        if (!PhonedValue.match(phoneformat)) {
-            setErrorPhone(true);
-        } else {
-            setErrorPhone(false);
-        }
-    }
+        setErrorPhone(!PhonedValue.match(phoneformat));
+    };
 
     const sendMessageToTelegram = (firstName, lastName, phone, email) => {
+        setErrorMessage(false); // Обнуление предыдущего сообщения об ошибке
+        setMessageSent(false); // Обнуление предыдущего сообщения об успешной отправке
         const message = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone: ${phone}\nEmail: ${email}`;
         fetch('http://localhost:3001/send-message', {
             method: 'POST',
@@ -40,25 +33,39 @@ export const RegPage = () => {
             },
             body: JSON.stringify({ message: message }),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // Здесь можно обработать ответ от сервера
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (!data.success) {
+                    setErrorMessage(true);
+                } else {
+                    setMessageSent(true);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                setErrorMessage(true);
+            });
     };
 
-    
-const handleClickNext = () => {
-    const firstName = document.querySelector('.regPage__content__form__inputs__firstName').value;
-    const lastName = document.querySelector('.regPage__content__form__inputs__lastName').value;
-    const phone = document.querySelector('.regPage__content__form__inputs__phone').value;
-    const email = document.querySelector('.regPage__content__form__inputs__email').value;
+    const handleClickNext = () => {
+       
+        if (!ErorrEmail && !ErorrPhone) {
+            const firstName = document.querySelector('.regPage__content__form__inputs__firstName').value;
+            const lastName = document.querySelector('.regPage__content__form__inputs__lastName').value;
+            const phone = document.querySelector('.regPage__content__form__inputs__phone').value;
+            const email = document.querySelector('.regPage__content__form__inputs__email').value;
 
-    sendMessageToTelegram(firstName, lastName, phone, email);
-};
+            if (!firstName || !lastName || !phone || !email) {
+                alert('Please fill in all fields.');
+                return; // Если хотя бы одно поле пустое, выходим из функции, кнопка не нажимается
+            }
+            sendMessageToTelegram(firstName, lastName, phone, email);
+        } else {
+            console.log('Please correct errors before proceeding.');
+
+        }
+    };
 
     return (
         <div className="regPage" >
@@ -84,7 +91,6 @@ const handleClickNext = () => {
                             </div>
                             <div style={{ display: "grid" }}>
                                 <input
-                                    /* pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"*/
                                     className={`regPage__content__form__inputs__phone ${ErorrPhone ? "inputError" : ""}`}
                                     type="text"
                                     placeholder='Phone Number'
@@ -105,10 +111,13 @@ const handleClickNext = () => {
                                 {ErorrEmail && <span style={{ margin: 0, color: "red", fontSize: "12px", paddingLeft: "90px" }}>incorrect email</span>}
                             </div>
                         </div>
+                        {errorMessage && <div className="error-message">Error. Please try again later</div>}
+                        {messageSent && <div className="message-sent">Message sent successfully!</div>}
                     </div>
-                    <div className='regPage__content__form__inputs__button' onClick={handleClickNext}>NEXT</div>
+                    <div className={`regPage__content__form__inputs__button ${ErorrEmail || ErorrPhone ? "disabled" : ""}`}
+                        onClick={handleClickNext}>NEXT</div>
                 </div>
             </div>
         </div>
     )
-}
+};

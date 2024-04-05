@@ -22,6 +22,12 @@ app.post('/send-message', (req, res) => {
 
     bot.sendMessage(chatId, message)
         .then(() => {
+            // Отправка сообщения клиенту через WebSocket при успешной отправке сообщения
+            wss.clients.forEach(client => {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send('Message sent successfully!');
+                }
+            });
             res.status(200).json({ success: true, message: 'Message sent successfully' });
         })
         .catch((error) => {
@@ -33,14 +39,18 @@ const server = app.listen(port, () => {
     console.log(`Express server is running on port ${port}`);
 });
 
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ port: wsPort });
 
 wss.on('connection', (ws) => {
+    console.log('WebSocket client connected');
+
     ws.on('message', (message) => {
         console.log('received: %s', message);
     });
 
-    ws.send('connected');
+    ws.on('close', () => {
+        console.log('WebSocket client disconnected');
+    });
 });
 
 console.log(`WebSocket server is running on port ${wsPort}`);
